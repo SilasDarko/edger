@@ -1,0 +1,24 @@
+# Docker Compose config — upstreams use Docker Compose service names.
+# Set EDGER_CONFIG_PATH=config/routes.docker.yaml in docker-compose.yml.
+
+routes:
+  - path: /users
+    upstream: http://user-service:4001
+    auth_required: true
+    timeout_ms: 2000
+    retries: 2
+    rate_limit_per_minute: 60
+
+  - path: /claims
+    upstream: http://claims-service:4002
+    auth_required: true
+    timeout_ms: 2000
+    retries: 2
+    rate_limit_per_minute: 60
+
+  - path: /payments
+    upstream: http://payments-service:4003
+    auth_required: true
+    timeout_ms: 2000
+    retries: 1
+    rate_limit_per_minute: 30

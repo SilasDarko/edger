@@ -1,0 +1,31 @@
+# Binaries
+edger
+gateway
+user-service
+claims-service
+payments-service
+*.exe
+*.out
+
+# Build artifacts
+/bin/
+/dist/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test output
+*.test
+coverage.out
+coverage.html

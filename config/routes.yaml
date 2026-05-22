@@ -1,0 +1,24 @@
+# Local development config — upstreams point to localhost.
+# For Docker Compose, use config/routes.docker.yaml instead.
+
+routes:
+  - path: /users
+    upstream: http://localhost:4001
+    auth_required: true
+    timeout_ms: 2000
+    retries: 2
+    rate_limit_per_minute: 60
+
+  - path: /claims
+    upstream: http://localhost:4002
+    auth_required: true
+    timeout_ms: 2000
+    retries: 2
+    rate_limit_per_minute: 60
+
+  - path: /payments
+    upstream: http://localhost:4003
+    auth_required: true
+    timeout_ms: 2000
+    retries: 1
+    rate_limit_per_minute: 30

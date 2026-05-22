@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.user-service
+    environment:
+      PORT: "4001"
+    ports:
+      - "4001:4001"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4001/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  claims-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.claims-service
+    environment:
+      PORT: "4002"
+    ports:
+      - "4002:4002"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4002/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  payments-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.payments-service
+    environment:
+      PORT: "4003"
+    ports:
+      - "4003:4003"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4003/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    environment:
+      PORT: "8080"
+      EDGER_API_KEY: "dev-api-key"
+      # Use the Docker Compose config so upstreams resolve by service name.
+      EDGER_CONFIG_PATH: "config/routes.docker.yaml"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - user-service
+      - claims-service
+      - payments-service
