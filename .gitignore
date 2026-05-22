@@ -1,9 +1,9 @@
 # Binaries
-edger
-gateway
-user-service
-claims-service
-payments-service
+/edger
+/gateway
+/user-service
+/claims-service
+/payments-service
 *.exe
 *.out
 
