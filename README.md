@@ -8,7 +8,7 @@ Built as a learning project to explore backend and platform engineering concepts
 
 ## Why I Built This
 
-I wanted a project that went beyond a basic CRUD app and forced me to think about what happens between a client and a backend service. Edger gave me hands-on experience with reverse proxying, middleware chains, reliability patterns, and how to structure a Go service clearly.
+I built Edger to get hands-on experience with reverse proxying, middleware chains, reliability patterns, and how to structure a Go service clearly.
 
 ---
 
@@ -334,10 +334,3 @@ The three backend services are intentionally minimal. They exist to give the gat
 - Request/response logging middleware with size limits
 
 ---
-
-## Resume Description
-
-**Edger | Go API Gateway and Reliability Proxy | Go, Docker, YAML, GitHub Actions**
-- Built a lightweight Go API gateway that routes requests to multiple mock backend services using YAML-based route configuration and reverse proxy middleware.
-- Added API-key authentication, in-memory rate limiting, structured request logging, retry handling for failed GET requests, and basic circuit breaker logic.
-- Exposed health checks and request-level metrics for latency, error rates, blocked requests, and downstream service failures, with Docker Compose and GitHub Actions CI.
